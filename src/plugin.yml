@@ -1,0 +1,7 @@
+name: PlayerDataDuplicateRemover
+main: duplicateremover.DuplicateRemover
+version: 1.0
+author: _Shevchik_
+commands:
+  dremove:
+    description: starts duplicate removing
