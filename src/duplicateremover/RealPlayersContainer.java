@@ -16,20 +16,24 @@ public class RealPlayersContainer {
 			if (nickname != null) {
 				OfflinePlayer offplayer = PlayersDataUtils.getOffilePlayer(nickname);
 				String offplayername = offplayer.getName();
-				if (realplayers.containsKey(offplayer.getName())) {
-					OfflinePlayer prevpl = realplayers.get(offplayer.getName());
+				if (realplayers.containsKey(offplayername.toLowerCase())) {
+					OfflinePlayer prevpl = realplayers.get(offplayername.toLowerCase());
 					if (prevpl.getLastPlayed() < offplayer.getLastPlayed()) {
-						realplayers.put(offplayername, offplayer);
+						realplayers.put(offplayername.toLowerCase(), offplayer);
 					}
 				} else {
-					realplayers.put(offplayername, offplayer);
+					realplayers.put(offplayername.toLowerCase(), offplayer);
 				}
 			}
 		}
 	}
 
 	public boolean isPlayerReal(String plname) {
-		return realplayers.containsKey(plname);
+		if (realplayers.containsKey(plname.toLowerCase())) {
+			OfflinePlayer offplayer = realplayers.get(plname.toLowerCase());
+			return offplayer.getName().equals(plname);
+		}
+		return false;
 	}
 
 }
