@@ -19,7 +19,9 @@ package datduplicateremover.storage;
 
 import java.util.HashMap;
 
+import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
 
 public class RealPlayersStorage {
 
@@ -38,6 +40,9 @@ public class RealPlayersStorage {
 				addRealPlayer(player);
 				continue;
 			}
+		}
+		for (Player player : Bukkit.getOnlinePlayers()) {
+			addRealPlayer(player);
 		}
 	}
 
