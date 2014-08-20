@@ -40,7 +40,7 @@ public class LoginListener implements Listener {
 			return;
 		}
 		if (!storage.isPlayerReal(event.getPlayer())) {
-			event.disallow(Result.KICK_OTHER, ChatColor.DARK_RED+"Invalid case in player name. " + ChatColor.RESET+"Please spell you name correctly: "+ChatColor.GOLD+storage.getRealPlayerValidName(event.getPlayer()));
+			event.disallow(Result.KICK_OTHER, ChatColor.DARK_RED + "Invalid case in player name. " + ChatColor.RESET + "\nPlease spell you name correctly: " + ChatColor.GOLD + storage.getRealPlayerValidName(event.getPlayer()));
 		}
 	}
 
