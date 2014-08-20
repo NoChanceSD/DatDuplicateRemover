@@ -42,7 +42,14 @@ public class RealPlayersStorage {
 	}
 
 	public boolean hasRealPlayer(OfflinePlayer player) {
-		return realplayers.containsKey(player.getName().toLowerCase());
+		if (realplayers.containsKey(player.getName().toLowerCase())) {
+			if (!PlayersDataUtils.getPlayerFile(player).exists()) {
+				removeRealPlayer(player);
+				return false;
+			}
+			return true;
+		}
+		return false;
 	}
 
 	public void addRealPlayer(OfflinePlayer player) {
@@ -50,11 +57,15 @@ public class RealPlayersStorage {
 	}
 
 	public boolean isPlayerReal(OfflinePlayer player) {
-		if (realplayers.containsKey(player.getName().toLowerCase())) {
+		if (hasRealPlayer(player)) {
 			PlayerData playerdata = realplayers.get(player.getName().toLowerCase());
 			return playerdata.getName().equals(player.getName());
 		}
 		return false;
+	}
+
+	private void removeRealPlayer(OfflinePlayer player) {
+		realplayers.remove(player.getName().toLowerCase());
 	}
 
 	private class PlayerData {
