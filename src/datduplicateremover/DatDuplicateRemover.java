@@ -20,6 +20,7 @@ package datduplicateremover;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import datduplicateremover.commands.Commands;
+import datduplicateremover.listeners.LoginListener;
 import datduplicateremover.storage.RealPlayersStorage;
 
 public class DatDuplicateRemover extends JavaPlugin {
@@ -40,6 +41,7 @@ public class DatDuplicateRemover extends JavaPlugin {
 		MLogger.init(this);
 		storage = new RealPlayersStorage();
 		getCommand("dremove").setExecutor(new Commands());
+		getServer().getPluginManager().registerEvents(new LoginListener(), this);
 	}
 
 	@Override

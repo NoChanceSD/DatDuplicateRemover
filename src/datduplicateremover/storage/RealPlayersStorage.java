@@ -64,6 +64,10 @@ public class RealPlayersStorage {
 		return false;
 	}
 
+	public String getRealPlayerValidName(OfflinePlayer player) {
+		return realplayers.get(player.getName().toLowerCase()).getName();
+	}
+
 	private void removeRealPlayer(OfflinePlayer player) {
 		realplayers.remove(player.getName().toLowerCase());
 	}
