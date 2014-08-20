@@ -1,6 +1,6 @@
 name: PlayerDataDuplicateRemover
-main: duplicateremover.DuplicateRemover
-version: 1.0
+main: datduplicateremover.DatDuplicateRemover
+version: 2.0
 author: _Shevchik_
 commands:
   dremove:
