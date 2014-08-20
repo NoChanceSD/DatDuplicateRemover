@@ -21,7 +21,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerLoginEvent.Result;
 
@@ -42,18 +41,6 @@ public class LoginListener implements Listener {
 		}
 		if (!storage.isPlayerReal(event.getPlayer())) {
 			event.disallow(Result.KICK_OTHER, ChatColor.DARK_RED+"Invalid case in player name. " + ChatColor.RESET+"Please spell you name correctly: "+ChatColor.GOLD+storage.getRealPlayerValidName(event.getPlayer()));
-		}
-	}
-
-	@EventHandler(priority=EventPriority.LOWEST,ignoreCancelled=true)
-	public void onPlayerJoin(PlayerJoinEvent event) {
-		RealPlayersStorage storage = DatDuplicateRemover.getInstance().getRealPlayersStorage();
-		if (!storage.hasRealPlayer(event.getPlayer())) {
-			storage.addRealPlayer(event.getPlayer());
-			return;
-		}
-		if (!storage.isPlayerReal(event.getPlayer())) {
-			event.getPlayer().kickPlayer(ChatColor.DARK_RED+"Invalid case in player name. " + ChatColor.RESET+"Please spell you name correctly: "+ChatColor.GOLD+storage.getRealPlayerValidName(event.getPlayer()));
 		}
 	}
 
