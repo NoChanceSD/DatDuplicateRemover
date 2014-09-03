@@ -41,12 +41,21 @@ public class DatDuplicateRemover extends JavaPlugin {
 		MLogger.init(this);
 		storage = new RealPlayersStorage();
 		getCommand("dremove").setExecutor(new Commands());
+		createDefaultConfig():
 		getServer().getPluginManager().registerEvents(new LoginListener(), this);
 	}
 
 	@Override
 	public void onDisable() {
 		instance = null;
+	}
+	
+	public void createDefaultConfig() {
+		FileConfiguration config = getConfig();
+		config.addDefault("locale.InvalidCase", "Invalid case in player name.");
+		config.addDefault("locale.SpellNameCorrect", "Please spell your name correctly");
+		config.options().copyDefaults(true);
+		saveConfig();
 	}
 
 }
